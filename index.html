@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
+
+    <script src="DV2.js"></script>
+
+    <title>Data Visualisation 2 </title>
+    <style> 
+        h1{
+            color:white;
+            background-color:lightslategray;
+            font-family: sans-serif;
+        }
+    
+        h2{
+            color:black;
+            background-color:lightsteelblue;
+            font-family: sans-serif;
+        }
+    
+        p{
+            font-family: sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <center><h1>Dashboard of Population Growth</h1>
+    <h3>Introduction</h3></center>
+    <p>Population Growth refers to the annual average rate of change of population size for a given country during a specified period.
+        Population Growth can be determined by the birth rate and the death rate of a certain country. If the death rate is higher than 
+        the birth rate, population size of that country will be smaller in that year. The first idiom is a map which shows the total population
+        for each country. The second idiom is a bubble plot which display the birth rate and death rate for each country. The third idiom is a 
+        line chart which compares the death rate of Australia and Malaysia from Year 2000 to 2021.
+    </p>
+
+    <center><h2>Total Population per Country </h2>
+    <div id="map">
+    </div>
+
+    <h2>Birth Rate and Death Rate per Country </h2>
+    <div id="bubble_plot">
+    </div>
+
+    <h2>Death Rate of Australia and Malaysia from Year 2000 to 2021 </h2>
+    <div id="line_chart">
+    </div></center>
+</body>
+</html>
