@@ -1,0 +1,39 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 800,
+    "height": 400,
+    "data": {
+      "url":
+        "https://raw.githubusercontent.com/isaaclim0307/DataVisualisation2/main/Death%20number%20in%202020.csv"
+    },
+    "selection": {
+      "continent_highlight": {
+        "type": "multi",
+        "fields": ["Gender"],
+        "bind": "legend"
+      }
+    },
+    "mark": "bar",
+    "encoding": {
+      "x": { "field": "Age_group", "type": "ordinal", "title": "Age Group"},
+      "y": { "field": "Number_of_deaths_in_2020", "type": "quantitative", "title": "Total Number of Deaths"},
+      "xOffset": {"field": "Gender"},
+      "color": {
+        "field": "Gender",
+        "type": "nominal",
+        "scale": {
+          "domain": ["Male", "Female"],
+          "range": ["#377eb8", "#ff7f00"]
+        }
+      },
+      "opacity": {
+        "condition": {"selection": "continent_highlight", "value": 1},
+        "value": 0.2
+      },
+      "tooltip": [
+        {"field": "Age_group", "type": "ordinal", "title": "Age Group"},
+        {"field": "Number_of_deaths_in_2020", "type": "quantitative", "format": ",", "title": "Number of deaths"},
+        {"field": "Gender", "type": "nominal"}
+      ]
+    }
+  }

@@ -1,0 +1,277 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 800,
+    "height": 400,
+    "data": {
+      "url": "https://raw.githubusercontent.com/isaaclim0307/3179/main/ne_110m.json",
+      "format": {
+        "type": "topojson",
+        "feature": "ne_110m_admin_0_countries"
+      }
+    },
+    "projection": {
+      "type": "equalEarth"
+    },
+    "layer": [
+      {
+        "transform": [
+          {
+            "calculate": "'Data unavailable for ' + datum.properties.NAME",
+            "as": "note"
+          }
+        ],
+        "mark": {
+          "type": "geoshape",
+          "fill": "dimgrey",
+          "stroke": "lightgrey"
+        },
+        "encoding": {
+          "tooltip": {
+            "field": "note"
+          }
+        }
+      },
+      {
+        "data": {
+          "url": "https://raw.githubusercontent.com/isaaclim0307/DataVisualisation2/main/ocean.topojson",
+          "format": {
+            "type": "topojson",
+            "feature": "oceans"
+          }
+        },
+        "mark": {
+          "type": "geoshape",
+          "fill": "deepskyblue"
+        }
+      },
+      {
+        "data": {
+          "url": "https://raw.githubusercontent.com/isaaclim0307/DataVisualisation2/main/graticules.topojson",
+          "format": {
+            "type": "topojson",
+            "feature": "ne_110m_graticules_30"
+          }
+        },
+        "mark": {
+          "type": "geoshape",
+          "fill": null,
+          "stroke": "lightgrey"
+        }
+      },
+      {
+        "transform": [
+          {
+            "lookup": "properties.NAME",
+            "from": {
+              "data": {
+                "url": "https://raw.githubusercontent.com/isaaclim0307/DataVisualisation2/main/Population.csv"
+              },
+              "key": "Country",
+              "fields": ["Population"]
+            }
+          }
+        ],
+        "mark": {
+          "type": "geoshape"
+        },
+        "encoding": {
+          "color": {
+            "field": "Population",
+            "type": "quantitative",
+            "scale": {
+              "type": "threshold",
+              "domain": [1000000, 5000000, 10000000, 50000000, 100000000],
+              "range": ["#C5B0EB", "#C9A5E7", "#BD8FCB", "#AD7AAF", "#93658A"]
+            }, 
+            "title": "Total Population"
+          },
+          "tooltip": [
+            {"field": "properties.NAME", "type": "nominal", "title": "Country"},
+            {"field": "Population", "type": "quantitative", "format": ",", "title": "Total Population"}
+          ]
+        }
+      },
+      {
+        "mark": {
+          "type": "text",
+          "baseline": "middle",
+          "dx": 150,
+          "dy": -160,
+          "fontsize": 11.5,
+          "fontStyle": "italic"
+        },
+        "encoding": {
+          "text": {
+            "field": "properties.NAME",
+            "type": "nominal"
+          },
+          "color": {
+            "value": "black"
+          },
+          "opacity": {
+            "condition": {
+              "test": "datum['properties.NAME'] == 'Russia'",
+              "value": 1
+            },
+            "value": 0
+          }
+        }
+      },
+      {
+        "mark": {
+          "type": "text",
+          "baseline": "middle",
+          "dx": -200,
+          "dy": -110,
+          "fontsize": 11.5,
+          "fontStyle": "italic"
+        },
+        "encoding": {
+          "text": {
+            "field": "properties.NAME",
+            "type": "nominal"
+          },
+          "color": {
+            "value": "black"
+          },
+          "opacity": {
+            "condition": {
+              "test": "datum['properties.NAME'] == 'United States of America'",
+              "value": 1
+            },
+            "value": 0
+          }
+        }
+      },
+      {
+        "mark": {
+          "type": "text",
+          "baseline": "middle",
+          "dx": 70,
+          "dy": 90,
+          "fontsize": 11.5, 
+          "fontStyle": "italic"
+        },
+        "encoding": {
+          "text": {
+            "field": "properties.NAME",
+            "type": "nominal"
+          },
+          "color": {
+            "value": "black"
+          },
+          "opacity": {
+            "condition": {
+              "test": "datum['properties.NAME'] == 'South Africa'",
+              "value": 1
+            },
+            "value": 0
+          }
+        }
+      },
+      {
+        "mark": {
+          "type": "text",
+          "baseline": "middle",
+          "dx": 200,
+          "dy": -100,
+          "fontsize": 11.5,
+          "fontStyle": "italic"
+        },
+        "encoding": {
+          "text": {
+            "field": "properties.NAME",
+            "type": "nominal"
+          },
+          "color": {
+            "value": "black"
+          },
+          "opacity": {
+            "condition": {
+              "test": "datum['properties.NAME'] == 'China'",
+              "value": 1
+            },
+            "value": 0
+          }
+        }
+      },
+      {
+        "mark": {
+          "type": "text",
+          "baseline": "middle",
+          "dx": 280,
+          "dy": 80,
+          "fontsize": 11.5,
+          "fontStyle": "italic"
+        },
+        "encoding": {
+          "text": {
+            "field": "properties.NAME",
+            "type": "nominal"
+          },
+          "color": {
+            "value": "black"
+          },
+          "opacity": {
+            "condition": {
+              "test": "datum['properties.NAME'] == 'Australia'",
+              "value": 1
+            },
+            "value": 0
+          }
+        }
+      },
+      {
+        "mark": {
+          "type": "text",
+          "baseline": "middle",
+          "dx": 250,
+          "dy": -15,
+          "fontsize": 11.5,
+          "fontStyle": "italic"
+        },
+        "encoding": {
+          "text": {
+            "field": "properties.NAME",
+            "type": "nominal"
+          },
+          "color": {
+            "value": "black"
+          },
+          "opacity": {
+            "condition": {
+              "test": "datum['properties.NAME'] == 'Malaysia'",
+              "value": 1
+            },
+            "value": 0
+          }
+        }
+      },
+      {
+        "mark": {
+          "type": "text",
+          "baseline": "middle",
+          "dx": 290,
+          "dy": -100,
+          "fontsize": 11.5,
+          "fontStyle": "italic"
+        },
+        "encoding": {
+          "text": {
+            "field": "properties.NAME",
+            "type": "nominal"
+          },
+          "color": {
+            "value": "black"
+          },
+          "opacity": {
+            "condition": {
+              "test": "datum['properties.NAME'] == 'Japan'",
+              "value": 1
+            },
+            "value": 0
+          }
+        }
+      }
+    ]
+  }
